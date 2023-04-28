@@ -1,0 +1,71 @@
+{
+   "release_id":16,
+   "released_by":"misaelaugust",
+   "created_at":"2023-01-24 10:12:51",
+   "description":"Package Carteirinha function - MA",
+   "released_at":"2023-01-24 10:14:07",
+   "created_by":"misaelaugust",
+   "sequence":19,
+   "updated_at":"2023-01-24 10:14:07",
+   "updated_by":"misaelaugust",
+   "guid":"F30345E5D2FCD3A8E05344FDA8C09C3F",
+   "layer_prefix":"PABC",
+   "hash":"E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+   "status":"L",
+   "registers":[
+      {
+         "guid":"F3031BF6A438C9A0E05344FDA8C04957",
+         "created_at":"2023-01-24 10:01:40",
+         "archive":"F3031BF6A438C9A0E05344FDA8C04957.json",
+         "created_by":"misaelaugust",
+         "guid_package":"F3031BF6A437C9A0E05344FDA8C04957",
+         "hash":"0636D66B8F923081BCCB717250DD0700BC478D47BE896211C2783C7B49C7F568",
+         "status":"WAITING TO BE SENT"
+      }
+   ],
+   "objects":[
+      {
+         "created_at":"2023-01-24 10:02:24",
+         "archive":"PABC_ATUALIZA_TITULAR_CONVENIO.prc",
+         "ie_database":"Oracle",
+         "created_by":"misaelaugust",
+         "sequence":10078220,
+         "updated_at":"2023-01-24 10:02:24",
+         "application":"Tasy",
+         "object_name":"PABC_ATUALIZA_TITULAR_CONVENIO",
+         "updated_by":null,
+         "guid":"F3031BF6A439C9A0E05344FDA8C04957",
+         "guid_package":"F3031BF6A437C9A0E05344FDA8C04957",
+         "hash":"61841CD06651462B3F43CDFED8E72D36AE79BBAF668709C8DD303F937CF2B4AA",
+         "ds_layer":"CORE.PARTNERABC"
+      }
+   ]
+   "smartlink":[
+      {
+         "created_at":"2023-01-22 10:02:24",
+		 "created_by":"misaelaugust",  
+         "archive":"flows.json",            
+         "guid":"F3031BF6A439C9A0E05344FDA8C04958",
+         "guid_package":"F3031BF6A437C9A0E05344FDA8C04957",
+         "hash":"61841CD06651462B3F43CDFED8E72D36AE79BBAF668709C8DD303F937CF2B4ZZ",
+      }
+   ]
+   "schematics":[
+      {
+         "created_at":"2023-01-22 10:02:24",
+		 "created_by":"misaelaugust",  
+         "archive":"angiology/angiology.json",            
+         "guid":"F3031BF6A439C9A0E05344FDA8C04959",
+         "guid_package":"F3031BF6A437C9A0E05344FDA8C04957",
+         "hash":"61841CD06651462B3F43CDFED8E72D36AE79BBAF668709C8DD303F937CF2B4ZZ",
+      }
+	  {
+         "created_at":"2023-01-22 10:02:24",
+		 "created_by":"misaelaugust",  
+         "archive":"angiology/cpanels/821574058.json",            
+         "guid":"F3031BF6A439C9A0E05344FDA8C04960",
+         "guid_package":"F3031BF6A437C9A0E05344FDA8C04957",
+         "hash":"61841CD06651462B3F43CDFED8E72D36AE79BBAF668709C8DD303F937CF2B4ZZ",
+      }
+   ]
+}

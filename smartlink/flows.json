@@ -1,0 +1,1505 @@
+[
+    {
+        "id": "05eaaff56f4adc08",
+        "type": "tab",
+        "label": "Overview",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "94a5908a877ab297",
+        "type": "tab",
+        "label": "Oncology Morning Routine",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5a3cc8c10b65d5fe",
+        "type": "tab",
+        "label": "SimpleDemo",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "584509dad8838c64",
+        "type": "tab",
+        "label": "GetEpisodeByPersonID",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "dcf55138c52f0b2e",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "fd181e30048c42a7",
+        "type": "subflow",
+        "name": "Subflow 2",
+        "info": "",
+        "in": [],
+        "out": []
+    },
+    {
+        "id": "1c6964a026e3b765",
+        "type": "subflow",
+        "name": "Subflow 3",
+        "info": "",
+        "in": [],
+        "out": []
+    },
+    {
+        "id": "5ee7d75493e8ef2b",
+        "type": "group",
+        "z": "05eaaff56f4adc08",
+        "name": "API - Created",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "7ab191fc14814c87",
+            "7adc4abaa342653d",
+            "d633385f81905baf",
+            "3b638479486e806c",
+            "3bf13991d8e76a21",
+            "de0caf9bb0f09d81"
+        ],
+        "x": 174,
+        "y": 379,
+        "w": 912,
+        "h": 142
+    },
+    {
+        "id": "0f23eace8c8ec973",
+        "type": "group",
+        "z": "5a3cc8c10b65d5fe",
+        "name": "UC_02",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "97b3fcec3f2aee10",
+            "67b8aa008f93bc94",
+            "0ff1a94b020e0959",
+            "f3c66d4651711287",
+            "cbf17ee82a40519b",
+            "eb90c111499713a8"
+        ],
+        "x": 34,
+        "y": 239,
+        "w": 912,
+        "h": 142
+    },
+    {
+        "id": "e24d93bc6a27373c",
+        "type": "inject",
+        "z": "fd181e30048c42a7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 140,
+        "wires": [
+            [
+                "af4a75b6e7c1c471"
+            ]
+        ]
+    },
+    {
+        "id": "af4a75b6e7c1c471",
+        "type": "sql builder",
+        "z": "fd181e30048c42a7",
+        "name": "",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "template": "select trunc(sysdate) as data from dual",
+        "output": "str",
+        "x": 390,
+        "y": 140,
+        "wires": [
+            [
+                "9cf12870975bbb85"
+            ]
+        ]
+    },
+    {
+        "id": "9cf12870975bbb85",
+        "type": "easy-oracle",
+        "z": "fd181e30048c42a7",
+        "name": "",
+        "x": 570,
+        "y": 140,
+        "wires": [
+            [
+                "90c98de98cd4b4b0",
+                "a6dee693ef48c7a6",
+                "d215509b7f298ad6"
+            ]
+        ]
+    },
+    {
+        "id": "d215509b7f298ad6",
+        "type": "switch",
+        "z": "fd181e30048c42a7",
+        "name": "",
+        "property": "msg.payload.rows[0].DATA",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "2023-01-26T00:00:00.000Z",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 790,
+        "y": 80,
+        "wires": [
+            [
+                "3cc3fca4bbdcd1af"
+            ]
+        ]
+    },
+    {
+        "id": "3cc3fca4bbdcd1af",
+        "type": "debug",
+        "z": "fd181e30048c42a7",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "1f5c69f8821dbc90",
+        "type": "debug",
+        "z": "fd181e30048c42a7",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "15fca955518bd224",
+        "type": "function",
+        "z": "fd181e30048c42a7",
+        "name": "function 2",
+        "func": "msg.payload = 'TESTE';\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 140,
+        "wires": [
+            [
+                "1f5c69f8821dbc90"
+            ]
+        ]
+    },
+    {
+        "id": "a6dee693ef48c7a6",
+        "type": "switch",
+        "z": "fd181e30048c42a7",
+        "name": "",
+        "property": "msg.payload.rows[0].DATA",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "2023-01-26T00:00:00.000Z",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 790,
+        "y": 140,
+        "wires": [
+            [
+                "15fca955518bd224"
+            ]
+        ]
+    },
+    {
+        "id": "0e809057965f7863",
+        "type": "debug",
+        "z": "fd181e30048c42a7",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "90c98de98cd4b4b0",
+        "type": "function",
+        "z": "fd181e30048c42a7",
+        "name": "function 3",
+        "func": "msg.payload = msg.payload.rows[0].DATA;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 800,
+        "y": 220,
+        "wires": [
+            [
+                "0e809057965f7863"
+            ]
+        ]
+    },
+    {
+        "id": "9b81991fe6801de5",
+        "type": "inject",
+        "z": "05eaaff56f4adc08",
+        "name": "Start",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 200,
+        "wires": [
+            [
+                "33880e1ca1556be3"
+            ]
+        ]
+    },
+    {
+        "id": "33880e1ca1556be3",
+        "type": "http request",
+        "z": "05eaaff56f4adc08",
+        "name": "Get Informations",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://webhook.site/882ce02b-1a47-473b-8852-963dd8fcbb5e",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 350,
+        "y": 200,
+        "wires": [
+            [
+                "f8c49ad95ce33888",
+                "9ffd7bcbd010250e",
+                "5bdc51548e9cdb8d"
+            ]
+        ]
+    },
+    {
+        "id": "f8c49ad95ce33888",
+        "type": "function",
+        "z": "05eaaff56f4adc08",
+        "name": "Manipulation Result",
+        "func": "let obj = {};\nif(!msg){\n    obj.sql = 'objeto vazio';\n} else {\n    obj.sql = 'insert into DADO_CARTEIRINHA_MA (NR_SEQUENCIA, DT_ATUALIZACAO, NM_USUARIO, DT_ATUALIZACAO_NREC, NM_USUARIO_NREC, CD_PESSOA_FISICA , CD_CARTEIRINHA, DT_VALIDADE , CD_CONVENIO, CD_CATEGORIA_CONVENIO) VALUES ((select max(nr_sequencia)+1 from DADO_CARTEIRINHA_MA), sysdate, '\n    + msg.payload.userName \n\t+ ', sysdate, ' \n    + msg.payload.userName + ', ' \n    + msg.payload.patientID + ', '\n    + msg.payload.insuranceCard + ', ' \n\t+ msg.payload.expirationDate + ', ' \n\t+ msg.payload.insuranceId + ', '\n\t+ msg.payload.categoryId\n    +  ')';\n}\n\nvar insert = obj.sql;\n\nreturn {topic: insert};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 160,
+        "wires": [
+            [
+                "3be916fc4dcb4ea1"
+            ]
+        ]
+    },
+    {
+        "id": "3be916fc4dcb4ea1",
+        "type": "easy-oracle",
+        "z": "05eaaff56f4adc08",
+        "name": "Database insert",
+        "x": 820,
+        "y": 140,
+        "wires": [
+            [
+                "385a1ed2e268d8b9"
+            ]
+        ]
+    },
+    {
+        "id": "385a1ed2e268d8b9",
+        "type": "function",
+        "z": "05eaaff56f4adc08",
+        "name": "Create Return to API",
+        "func": "msg.payload = {\n    'Result' : 'Insert ok'\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1060,
+        "y": 140,
+        "wires": [
+            [
+                "1abf7dc24b033649"
+            ]
+        ]
+    },
+    {
+        "id": "1abf7dc24b033649",
+        "type": "http request",
+        "z": "05eaaff56f4adc08",
+        "name": "Send to API - Post",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://webhook.site/882ce02b-1a47-473b-8852-963dd8fcbb5e",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1370,
+        "y": 140,
+        "wires": [
+            [
+                "c7807d8309c79faf"
+            ]
+        ]
+    },
+    {
+        "id": "9ffd7bcbd010250e",
+        "type": "change",
+        "z": "05eaaff56f4adc08",
+        "name": "Changing Message",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload.insuranceId",
+                "pt": "msg",
+                "from": "62",
+                "fromt": "num",
+                "to": "12",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 590,
+        "y": 260,
+        "wires": [
+            [
+                "4cf7f7a2f499a03a",
+                "541464d7b5aa6543"
+            ]
+        ]
+    },
+    {
+        "id": "5bdc51548e9cdb8d",
+        "type": "debug",
+        "z": "05eaaff56f4adc08",
+        "name": "Complete Message",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "4cf7f7a2f499a03a",
+        "type": "debug",
+        "z": "05eaaff56f4adc08",
+        "name": "Changed message",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 830,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "541464d7b5aa6543",
+        "type": "switch",
+        "z": "05eaaff56f4adc08",
+        "name": "Simple switch",
+        "property": "payload.heart",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "11",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 820,
+        "y": 280,
+        "wires": [
+            [
+                "327e87a9ae5acd86"
+            ]
+        ]
+    },
+    {
+        "id": "327e87a9ae5acd86",
+        "type": "function",
+        "z": "05eaaff56f4adc08",
+        "name": "Change msg.payload",
+        "func": "msg.payload.Change = \"TRUE\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1060,
+        "y": 280,
+        "wires": [
+            [
+                "a8c72a80cf28de68"
+            ]
+        ]
+    },
+    {
+        "id": "c7807d8309c79faf",
+        "type": "debug",
+        "z": "05eaaff56f4adc08",
+        "name": "Display",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1560,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "f8b48429bdd14a42",
+        "type": "complete",
+        "z": "05eaaff56f4adc08",
+        "name": "Completing",
+        "scope": [
+            "9ffd7bcbd010250e"
+        ],
+        "uncaught": false,
+        "x": 1030,
+        "y": 200,
+        "wires": [
+            [
+                "ba1f15e5d8d5eb84"
+            ]
+        ]
+    },
+    {
+        "id": "ba1f15e5d8d5eb84",
+        "type": "function",
+        "z": "05eaaff56f4adc08",
+        "name": "Complete",
+        "func": "msg.payload.urgency = \"Máxima urgência\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1180,
+        "y": 200,
+        "wires": [
+            [
+                "1abf7dc24b033649",
+                "a5a308cd25eb1c99"
+            ]
+        ]
+    },
+    {
+        "id": "a5a308cd25eb1c99",
+        "type": "debug",
+        "z": "05eaaff56f4adc08",
+        "name": "Full cicle",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1360,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "97b4fe7bf9fc64bb",
+        "type": "catch",
+        "z": "05eaaff56f4adc08",
+        "name": "Manage errors",
+        "scope": [
+            "33880e1ca1556be3"
+        ],
+        "uncaught": false,
+        "x": 160,
+        "y": 60,
+        "wires": [
+            [
+                "c4a52521efbd2d6c"
+            ]
+        ]
+    },
+    {
+        "id": "c4a52521efbd2d6c",
+        "type": "http request",
+        "z": "05eaaff56f4adc08",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://webhook.site/882ce02b-1a47-473b-8852-963dd8fcbb5e",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 370,
+        "y": 60,
+        "wires": [
+            [
+                "5bdc51548e9cdb8d"
+            ]
+        ]
+    },
+    {
+        "id": "7ab191fc14814c87",
+        "type": "http in",
+        "z": "05eaaff56f4adc08",
+        "g": "5ee7d75493e8ef2b",
+        "name": "Waiting Call",
+        "url": "/tasybd123",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 270,
+        "y": 480,
+        "wires": [
+            [
+                "d633385f81905baf",
+                "de0caf9bb0f09d81"
+            ]
+        ]
+    },
+    {
+        "id": "7adc4abaa342653d",
+        "type": "http response",
+        "z": "05eaaff56f4adc08",
+        "g": "5ee7d75493e8ef2b",
+        "name": "Send message",
+        "statusCode": "",
+        "headers": {
+            "location": ""
+        },
+        "x": 980,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "d633385f81905baf",
+        "type": "function",
+        "z": "05eaaff56f4adc08",
+        "g": "5ee7d75493e8ef2b",
+        "name": "Creates message",
+        "func": "msg.payload = {\n    patient: 632437,\n    temperature: 36.5, \n    heart: 114,\n    bloodpressure: \"12/8\"}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 480,
+        "wires": [
+            [
+                "3b638479486e806c"
+            ]
+        ]
+    },
+    {
+        "id": "3b638479486e806c",
+        "type": "json",
+        "z": "05eaaff56f4adc08",
+        "g": "5ee7d75493e8ef2b",
+        "name": "Json convertion",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 740,
+        "y": 480,
+        "wires": [
+            [
+                "7adc4abaa342653d"
+            ]
+        ]
+    },
+    {
+        "id": "a8c72a80cf28de68",
+        "type": "link out",
+        "z": "05eaaff56f4adc08",
+        "name": "link out 1",
+        "mode": "link",
+        "links": [
+            "3e139976f335a229"
+        ],
+        "x": 1215,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "3e139976f335a229",
+        "type": "link in",
+        "z": "05eaaff56f4adc08",
+        "name": "link in 1",
+        "links": [
+            "a8c72a80cf28de68"
+        ],
+        "x": 95,
+        "y": 300,
+        "wires": [
+            [
+                "ed07c0cd80cf4ed0"
+            ]
+        ]
+    },
+    {
+        "id": "ed07c0cd80cf4ed0",
+        "type": "debug",
+        "z": "05eaaff56f4adc08",
+        "name": "Exit link",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 220,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "3bf13991d8e76a21",
+        "type": "comment",
+        "z": "05eaaff56f4adc08",
+        "g": "5ee7d75493e8ef2b",
+        "name": "What do I do?",
+        "info": "A API irá pegar as informações da função criada na segunda-feira e enviar a um sistema terceiro.",
+        "x": 710,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "de0caf9bb0f09d81",
+        "type": "debug",
+        "z": "05eaaff56f4adc08",
+        "g": "5ee7d75493e8ef2b",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "c53999ad89f33a96",
+        "type": "http response",
+        "z": "05eaaff56f4adc08",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 350,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "d4c24405212b4fe6",
+        "type": "function",
+        "z": "05eaaff56f4adc08",
+        "name": "function 4",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9c8f1707504eb867",
+        "type": "easy-oracle",
+        "z": "05eaaff56f4adc08",
+        "name": "",
+        "x": 510,
+        "y": 680,
+        "wires": [
+            [
+                "59dd8641e88e43a3"
+            ]
+        ]
+    },
+    {
+        "id": "c4b55cb963efbcd3",
+        "type": "inject",
+        "z": "05eaaff56f4adc08",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 680,
+        "wires": [
+            [
+                "3ef17fe09a743930"
+            ]
+        ]
+    },
+    {
+        "id": "3ef17fe09a743930",
+        "type": "sql builder",
+        "z": "05eaaff56f4adc08",
+        "name": "",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "template": "SELECT * FROM DL_FERIADO",
+        "output": "str",
+        "x": 310,
+        "y": 680,
+        "wires": [
+            [
+                "9c8f1707504eb867"
+            ]
+        ]
+    },
+    {
+        "id": "59dd8641e88e43a3",
+        "type": "debug",
+        "z": "05eaaff56f4adc08",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "6a4373a0fc66f541",
+        "type": "inject",
+        "z": "94a5908a877ab297",
+        "name": "Start",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "SELECT CD_SETOR_ATENDIMENTO, QT_TEMP_INICIAL FROM SETOR_TEMPERATURA WHERE ROWNUM <= 15 ORDER BY DT_ATUALIZACAO DESC",
+        "payload": "oncology_daily",
+        "payloadType": "env",
+        "x": 90,
+        "y": 220,
+        "wires": [
+            [
+                "19b2b485cf4cdb70",
+                "f827e8b9c5eecb09"
+            ]
+        ]
+    },
+    {
+        "id": "3342a13e40afb2c2",
+        "type": "html",
+        "z": "94a5908a877ab297",
+        "name": "List News",
+        "property": "payload",
+        "outproperty": "payload",
+        "tag": ".container__headline.container_lead-plus-headlines-with-images__headline",
+        "ret": "text",
+        "as": "single",
+        "x": 440,
+        "y": 100,
+        "wires": [
+            [
+                "7e8d24bc432fcfb4",
+                "594badb1e4cc5438"
+            ]
+        ]
+    },
+    {
+        "id": "19b2b485cf4cdb70",
+        "type": "http request",
+        "z": "94a5908a877ab297",
+        "name": "Get Health News (CNN)",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "body",
+        "url": "https://edition.cnn.com/health",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 270,
+        "y": 180,
+        "wires": [
+            [
+                "3342a13e40afb2c2",
+                "b05b43ec27ad8413"
+            ]
+        ]
+    },
+    {
+        "id": "7e8d24bc432fcfb4",
+        "type": "debug",
+        "z": "94a5908a877ab297",
+        "name": "Show Raw News List",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "594badb1e4cc5438",
+        "type": "function",
+        "z": "94a5908a877ab297",
+        "name": "Format by Levels",
+        "func": "msg.headers = msg.originalHeaders;\nvar healthNews = msg.payload;\nvar newPayload = [];\n\nfor(var i=0; i<healthNews.length; i++) {\n    newPayload.push({\n    position:Number(i),\n    level:healthNews[i].includes(\"cancer\") ? \"Oncology\" : \"Standard\",\n    description:healthNews[i].replace(/\\s+/g, \" \").replace(/^\\s+|\\s+$/g, \"\")\n});\n}\nmsg.payload = newPayload;\n\ncontext.global.newsList = msg.payload;\ncontext.global.newsUpdate = new Date();\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 140,
+        "wires": [
+            [
+                "bef3b2a3fb100832",
+                "9947a9724de63e48"
+            ]
+        ]
+    },
+    {
+        "id": "9947a9724de63e48",
+        "type": "debug",
+        "z": "94a5908a877ab297",
+        "name": "Show Formated News List",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1010,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "bef3b2a3fb100832",
+        "type": "json",
+        "z": "94a5908a877ab297",
+        "name": "Convert to JSon String",
+        "property": "payload",
+        "action": "",
+        "pretty": true,
+        "x": 940,
+        "y": 140,
+        "wires": [
+            [
+                "9947a9724de63e48"
+            ]
+        ]
+    },
+    {
+        "id": "e37100f8395796fe",
+        "type": "comment",
+        "z": "94a5908a877ab297",
+        "name": "Daily News",
+        "info": "It retrieves the health news of the day and creates a JSon separating it into \"Oncology\" for sector attention and \"Standard\" for secondary reading.",
+        "x": 260,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "f827e8b9c5eecb09",
+        "type": "easy-oracle",
+        "z": "94a5908a877ab297",
+        "name": "Department Temperature DB ",
+        "x": 320,
+        "y": 260,
+        "wires": [
+            [
+                "4df2b77ebf947264",
+                "db1a73dfa527fcbc"
+            ]
+        ]
+    },
+    {
+        "id": "4df2b77ebf947264",
+        "type": "debug",
+        "z": "94a5908a877ab297",
+        "name": "Show Department Temperature",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "61635fe9916f8869",
+        "type": "http in",
+        "z": "94a5908a877ab297",
+        "name": "OMR Web Service",
+        "url": "/omr",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 170,
+        "y": 460,
+        "wires": [
+            [
+                "5d3f5f64a0969cc4"
+            ]
+        ]
+    },
+    {
+        "id": "029546086779159f",
+        "type": "http response",
+        "z": "94a5908a877ab297",
+        "name": "WS Response",
+        "statusCode": "",
+        "headers": {},
+        "x": 440,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "5d3f5f64a0969cc4",
+        "type": "function",
+        "z": "94a5908a877ab297",
+        "name": "Load Context",
+        "func": "node.warn(context.global.newsList);\n\nlet html = '<!doctype html>\\n' +\n'<html>\\n' +\n'<body><h1>Health News!</h1><br><br><ol>\\n';\n\ncontext.global.newsList.forEach(sortNews);\n\nhtml += '</ol></body></html>';\n\nmsg.payload = html;\n\nreturn msg;\n\nfunction sortNews(news) {\n    if(news.level === \"Oncology\") {\n        html += '<li><b>' + news.description + '</b></li>\\n';\n    }\n    else {\n         html += '<li>' + news.description + '</li>\\n';\n    }\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 520,
+        "wires": [
+            [
+                "029546086779159f"
+            ]
+        ]
+    },
+    {
+        "id": "da59645b168a8ebd",
+        "type": "complete",
+        "z": "94a5908a877ab297",
+        "name": "",
+        "scope": [
+            "db1a73dfa527fcbc"
+        ],
+        "uncaught": false,
+        "x": 150,
+        "y": 660,
+        "wires": [
+            [
+                "e9239863f11c9552"
+            ]
+        ]
+    },
+    {
+        "id": "db1a73dfa527fcbc",
+        "type": "http request",
+        "z": "94a5908a877ab297",
+        "name": "Inform WS Access",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://webhook.site/8eb0ff4d-cb82-4e84-a426-4d9b4981cdcd",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "WSResponse",
+                "valueType": "other",
+                "valueValue": "200"
+            }
+        ],
+        "x": 590,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e9239863f11c9552",
+        "type": "debug",
+        "z": "94a5908a877ab297",
+        "name": "Log Access",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 390,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "b05b43ec27ad8413",
+        "type": "debug",
+        "z": "94a5908a877ab297",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 400,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "cc8f8a67c62606c1",
+        "type": "inject",
+        "z": "5a3cc8c10b65d5fe",
+        "name": "Start",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 140,
+        "wires": [
+            [
+                "e08f8e3a54543c7d"
+            ]
+        ]
+    },
+    {
+        "id": "e08f8e3a54543c7d",
+        "type": "http request",
+        "z": "5a3cc8c10b65d5fe",
+        "name": "ColetaTemp",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://api.openweathermap.org/data/2.5/weather?lat=-27.091&lon=-48.612&units=metric&appid=3546161ce4fdfef25eebdd9d8e460132",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 270,
+        "y": 140,
+        "wires": [
+            [
+                "62187515be596b70",
+                "3a14ace7a56128db"
+            ]
+        ]
+    },
+    {
+        "id": "62187515be596b70",
+        "type": "function",
+        "z": "5a3cc8c10b65d5fe",
+        "name": "InsertTempOracle",
+        "func": "let obj = {};\nif(!msg){\n    obj.sql = 'objeto vazio';\n} else {\n    obj.sql = 'INSERT INTO SETOR_TEMPERATURA (NR_SEQUENCIA, CD_SETOR_ATENDIMENTO, DT_HORA_INICIO, DT_HORA_FIM, QT_TEMP_INICIAL, DT_ATUALIZACAO, NM_USUARIO) VALUES ((select max(nr_sequencia)+1 from SETOR_TEMPERATURA), 70, SYSDATE, SYSDATE,'\n    + msg.payload.main.temp + ', sysdate, \\'ASIMOVBR\\')'\n}\nvar insert = obj.sql;\nreturn {topic: insert};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 140,
+        "wires": [
+            [
+                "b45426b79edf5047"
+            ]
+        ]
+    },
+    {
+        "id": "b45426b79edf5047",
+        "type": "easy-oracle",
+        "z": "5a3cc8c10b65d5fe",
+        "name": "ImportOracle",
+        "x": 690,
+        "y": 140,
+        "wires": [
+            [
+                "f11471d41f41e2f4"
+            ]
+        ]
+    },
+    {
+        "id": "f11471d41f41e2f4",
+        "type": "debug",
+        "z": "5a3cc8c10b65d5fe",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "97b3fcec3f2aee10",
+        "type": "http in",
+        "z": "5a3cc8c10b65d5fe",
+        "g": "0f23eace8c8ec973",
+        "name": "Waiting Call",
+        "url": "/tasybd",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 340,
+        "wires": [
+            [
+                "0ff1a94b020e0959",
+                "eb90c111499713a8"
+            ]
+        ]
+    },
+    {
+        "id": "67b8aa008f93bc94",
+        "type": "http response",
+        "z": "5a3cc8c10b65d5fe",
+        "g": "0f23eace8c8ec973",
+        "name": "Send message",
+        "statusCode": "",
+        "headers": {
+            "location": ""
+        },
+        "x": 840,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "0ff1a94b020e0959",
+        "type": "function",
+        "z": "5a3cc8c10b65d5fe",
+        "g": "0f23eace8c8ec973",
+        "name": "Creates message",
+        "func": "msg.payload = {\n    patient: 632437,\n    temperature: 36.5, \n    heart: 114,\n    bloodpressure: \"12/8\"}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 340,
+        "wires": [
+            [
+                "f3c66d4651711287"
+            ]
+        ]
+    },
+    {
+        "id": "f3c66d4651711287",
+        "type": "json",
+        "z": "5a3cc8c10b65d5fe",
+        "g": "0f23eace8c8ec973",
+        "name": "Json convertion",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 600,
+        "y": 340,
+        "wires": [
+            [
+                "67b8aa008f93bc94"
+            ]
+        ]
+    },
+    {
+        "id": "cbf17ee82a40519b",
+        "type": "comment",
+        "z": "5a3cc8c10b65d5fe",
+        "g": "0f23eace8c8ec973",
+        "name": "What do I do?",
+        "info": "A API irá pegar as informações da função criada na segunda-feira e enviar a um sistema terceiro.",
+        "x": 570,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "eb90c111499713a8",
+        "type": "debug",
+        "z": "5a3cc8c10b65d5fe",
+        "g": "0f23eace8c8ec973",
+        "name": "Request display",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "3a14ace7a56128db",
+        "type": "debug",
+        "z": "5a3cc8c10b65d5fe",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "df5f36d1441be83d",
+        "type": "http in",
+        "z": "584509dad8838c64",
+        "name": "Request",
+        "url": "GetPersonById",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 200,
+        "y": 360,
+        "wires": [
+            [
+                "4a2ab40598216e4e"
+            ]
+        ]
+    },
+    {
+        "id": "be250539365c5e1c",
+        "type": "easy-oracle",
+        "z": "584509dad8838c64",
+        "name": "",
+        "x": 630,
+        "y": 360,
+        "wires": [
+            [
+                "9ab751cc55fad226"
+            ]
+        ]
+    },
+    {
+        "id": "52c1df149193be14",
+        "type": "http response",
+        "z": "584509dad8838c64",
+        "name": "Response",
+        "statusCode": "",
+        "headers": {},
+        "x": 1000,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "9ab751cc55fad226",
+        "type": "json",
+        "z": "584509dad8838c64",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 810,
+        "y": 360,
+        "wires": [
+            [
+                "52c1df149193be14"
+            ]
+        ]
+    },
+    {
+        "id": "4a2ab40598216e4e",
+        "type": "function",
+        "z": "584509dad8838c64",
+        "name": "ReadRequest",
+        "func": "let obj = {};\nif(!msg){\n    obj.sql = 'objeto vazio';\n} else {\n    obj.sql = 'SELECT nr_atendimento as episode_ID'\n    + ', dt_entrada as date_In'\n    + ', dt_alta as date_out'\n    + ', cd_setor_atendimento as department_ID'\n    + ', obter_nome_setor(cd_setor_atendimento) as department_name'\n    + ', obter_nome_pf(cd_pessoa_fisica) as patient_Name'\n    + ', obter_nome_medico(cd_medico_resp, \\'n\\') as doctor_Name  FROM atendimento_paciente_v2 where cd_pessoa_fisica = '\n    + msg.req.body.patient  \n    + ' and dt_alta is null';\n}\n\nvar insert = obj.sql;\nmsg.topic = insert;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 360,
+        "wires": [
+            [
+                "be250539365c5e1c"
+            ]
+        ]
+    }
+]
